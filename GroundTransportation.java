@@ -7,14 +7,16 @@
 public class GroundTransportation extends Transport
 {
     private String licensePlate;
-    private static double fees = 0.3;
+    private static double fees = 3.00;
     
     /**
      * Constructor for objects of class GroundTransportation
      */
     public GroundTransportation(String plate)
     {
+        super();
         this.licensePlate = plate;
+        super.setFees(fees);
     }
 
     public String getLicensePlate(){
@@ -25,7 +27,16 @@ public class GroundTransportation extends Transport
         this.licensePlate = plate;
     }
     
-    public double getFees(){
-        return fees;
+    public double getPriceWithFees(){
+        return (100.00+fees)*getPrice()/100;
+    }
+    
+    public String getTransportType(){
+        return "Transporte Terrestre";
+    }
+    
+    @Override
+    public String toString() {
+        return super.toString() + String.format("%15s: %s\n", "Matricula", this.licensePlate);
     }
 }

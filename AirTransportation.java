@@ -8,14 +8,17 @@ public class AirTransportation extends Transport
 {
     private String name;
     private int numberOfContainers;
-    private static double fees = 0.4;
+    private static double fees = 4.00;
+    
     /**
      * Constructor for objects of class AirTransportation
      */
     public AirTransportation(String airPlaneName, int numContainers)
     {
+        super();
         this.name = airPlaneName;
         this.numberOfContainers = numContainers;
+        super.setFees(fees);
     }
 
     public String getName(){
@@ -34,8 +37,16 @@ public class AirTransportation extends Transport
         this.numberOfContainers = numContainers;
     }
     
-    public double getFees(){
-        return fees;
+    public double getPriceWithFees(){
+        return (100.00+fees)*getPrice()/100;
+    }
+
+    public String getTransportType(){
+        return "Transporte Aereo";
     }
     
+    @Override
+    public String toString() {
+        return super.toString() + String.format("%15s: %s\n", "Nome", this.name) + String.format("%15s: %s\n", "NºContentores", numberOfContainers);
+    }
 }
